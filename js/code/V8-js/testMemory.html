@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0">
+        <title>evo</title>
+        <link rel="icon"  type="image/x-icon"  href="/subsystem/static/favicon.ico">
+    </head>
+    <body>
+        <script>
+            // 使用  window.p1 = null 清除内存
+            // 使用 document.body.remvoChild 清除的 DOM 节点，在memory中还是存在的 ，使用 = null 清除
+            // console.log 也会阻止垃圾回收
+            // 展示压栈 出栈
+            function one() {
+                debugger
+                var a = 0;
+                debugger
+                console.log("one", a);
+            }
+            function fn(params) {
+                p1 = new one()
+                this.p2 = new one()
+            }
+            fn()
+
+
+            // new set() new Map() 需要逐级清理才可以将内存全部清除
+            function person(params) {
+                console.log(params)
+            }
+            var obj = new person("aa")
+            var set = new Set([obj])
+            var map = new Map([obj,"ssss"])
+
+            
+        </script>
+    </body>
+</html>
